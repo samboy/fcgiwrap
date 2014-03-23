@@ -13,8 +13,11 @@ Features
 ========
  - very lightweight (84KB of private memory per instance)
  - fixes broken CR/LF in headers
- - handles environment in a sane way (CGI scripts get HTTP-related env. vars from FastCGI parameters and inherit all the others from ``fcgiwrap``'s environment)
- - no configuration, so you can run several sites off the same ``fcgiwrap`` pool
+ - handles environment in a sane way (CGI scripts get HTTP-related env. vars 
+   from FastCGI parameters and inherit all the others from ``fcgiwrap``'s 
+   environment)
+ - no configuration, so you can run several sites off the same ``fcgiwrap`` 
+   pool
  - passes CGI stderr output to ``fcgiwrap``'s stderr or FastCGI stderr stream
 
 Installation
@@ -43,8 +46,16 @@ To install::
 
 usage
 -----
-Most probably you will want ``fcgiwrap`` be launched by `www-servers/spawn-fcgi <http://redmine.lighttpd.net/projects/spawn-fcgi>`_. Or you could use the author's Perl launcher - see the homepage for that.
+Most probably you will want ``fcgiwrap`` be launched by spawn-fcgi, which
+is included here as the file spawn-fcgi-1.6.3-1.el6.src.rpm.  Directions
+for installing are in the file COMPILE.fcgi
 
 There are two modes of ``fcgiwrap`` operation:
- - when *SCRIPT_FILENAME* is set, its value is treated as the script name and executed directly.
- - otherwise, *DOCUMENT_ROOT* and *SCRIPT_NAME* are concatenated and split back again into the script name and *PATH_INFO*. For example, given a *DOCUMENT_ROOT* of ``/www/cgi`` and *SCRIPT_NAME* of ``/subdir/example.cgi/foobar``, ``fcgiwrap`` will execute ``/www/cgi/subdir/example.cgi`` with *PATH_INFO* of ``/foobar`` (assuming ``example.cgi`` exists and is executable).
+ - when *SCRIPT_FILENAME* is set, its value is treated as the script name 
+   and executed directly.
+ - otherwise, *DOCUMENT_ROOT* and *SCRIPT_NAME* are concatenated and split 
+   back again into the script name and *PATH_INFO*. For example, given a 
+   *DOCUMENT_ROOT* of ``/www/cgi`` and *SCRIPT_NAME* of 
+   ``/subdir/example.cgi/foobar``, ``fcgiwrap`` will execute 
+   ``/www/cgi/subdir/example.cgi`` with *PATH_INFO* of ``/foobar`` (assuming 
+   ``example.cgi`` exists and is executable).
