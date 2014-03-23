@@ -44,6 +44,13 @@ To install::
 *fcgiwrap* will be copied to ``/usr/local/sbin/fcgiwrap`` if you did not set
 ``--prefix`` for configure or ``DESTDIR`` for the makefile.
 
+system startup
+--------------
+
+A system startup script for CentOS 6 is included in the directory init.d/
+here.  Note that newer distros of Linux use systemd, which uses a different
+configuration format for starting daemons (services).
+
 usage
 -----
 Most probably you will want ``fcgiwrap`` be launched by spawn-fcgi, which
