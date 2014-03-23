@@ -11,6 +11,7 @@
 #
 FCGI_SOCKET=/var/run/fcgiwrap.socket
 FCGI_PROGRAM=/usr/local/sbin/fcgiwrap
+# This might have to be "apache"
 FCGI_USER=nobody
 FCGI_GROUP=nobody
 FCGI_EXTRA_OPTIONS="-M 0700"
