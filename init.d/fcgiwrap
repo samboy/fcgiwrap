@@ -11,9 +11,11 @@
 #
 FCGI_SOCKET=/var/run/fcgiwrap.socket
 FCGI_PROGRAM=/usr/local/sbin/fcgiwrap
-# This might have to be "apache"
+# This might have to be "apache"  With my setup, it's user nobody,
+# group apache
 FCGI_USER=nobody
 FCGI_GROUP=nobody
-FCGI_EXTRA_OPTIONS="-M 0700"
+# This can be 0700 (only user can use socket for CGIs) on some setups
+FCGI_EXTRA_OPTIONS="-M 0770"
 OPTIONS="-u $FCGI_USER -g $FCGI_GROUP -s $FCGI_SOCKET -S $FCGI_EXTRA_OPTIONS -F 1 -P /var/run/spawn-fcgi.pid -- $FCGI_PROGRAM"
 spawn-fcgi $OPTIONS
